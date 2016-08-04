@@ -19,6 +19,10 @@ public class Drink {
 	private File picture;
 	private List<Ingredient> ingredients;
 
+	public Drink() {
+
+	}
+
 	public Drink(String name, File picture, List<Ingredient> ingredients) {
 		this.name = name;
 		this.picture = picture;
