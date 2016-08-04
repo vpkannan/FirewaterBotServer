@@ -30,13 +30,12 @@ public class FunctionalTests extends AbstractTestNGSpringContextTests {
 
 	public FunctionalTests() {
 
-		drink = new Drink();
 		ctx = new GenericXmlApplicationContext("springBeans.xml");
 		mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
 
 		this.timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 
-		this.drink.setName("Martini" + "@" + this.timeStamp);
+		String drinkName = "Martini" + "@" + this.timeStamp;
 		// this.drink.setPicture(new File("martini.jpeg"));
 
 		List<Ingredient> ingredients = new ArrayList<Ingredient>();
@@ -44,7 +43,7 @@ public class FunctionalTests extends AbstractTestNGSpringContextTests {
 		ingredients.add(new Ingredient(BaseDrink.GIN, 40.0));
 		ingredients.add(new Ingredient(BaseDrink.VERMOUTH, 20.0));
 
-		this.drink.setIngredients(ingredients);
+		this.drink = new Drink(drinkName, ingredients);
 
 	}
 
