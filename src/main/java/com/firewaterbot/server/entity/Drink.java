@@ -15,18 +15,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "drink")
 public class Drink {
 
-	private int id;
 	private String name;
 	private File picture;
 	private List<Ingredient> ingredients;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;

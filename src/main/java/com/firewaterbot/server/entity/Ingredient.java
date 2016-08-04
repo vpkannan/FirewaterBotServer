@@ -11,17 +11,19 @@ import java.io.File;
  */
 public class Ingredient {
 
-	private int id;
 	private BaseDrink baseDrink;
 	private File picture;
-	private float Quantity;
+	private Double Quantity;
 
-	public int getId() {
-		return id;
+	public Ingredient(BaseDrink baseDrink, File picture, Double quantity) {
+		this.baseDrink = baseDrink;
+		this.picture = picture;
+		Quantity = quantity;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public Ingredient(BaseDrink baseDrink, Double quantity) {
+		this.baseDrink = baseDrink;
+		Quantity = quantity;
 	}
 
 	public BaseDrink getBaseDrink() {
@@ -40,11 +42,11 @@ public class Ingredient {
 		this.picture = picture;
 	}
 
-	public float getQuantity() {
+	public Double getQuantity() {
 		return Quantity;
 	}
 
-	public void setQuantity(float quantity) {
+	public void setQuantity(Double quantity) {
 		Quantity = quantity;
 	}
 

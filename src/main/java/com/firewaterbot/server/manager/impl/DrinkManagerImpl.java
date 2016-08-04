@@ -36,8 +36,13 @@ public class DrinkManagerImpl implements DrinkManager {
 	 * firewaterbot.server.entity.Drink)
 	 */
 	public boolean addNewDrinkRecipe(Drink drink) {
-		// TODO Auto-generated method stub
+		
 		return false;
+	}
+
+	public Drink getDrinkRecipe(String drinkName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/*
