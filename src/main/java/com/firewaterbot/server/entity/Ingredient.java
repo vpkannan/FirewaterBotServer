@@ -15,6 +15,10 @@ public class Ingredient {
 	private File picture;
 	private Double Quantity;
 
+	public Ingredient() {
+
+	}
+
 	public Ingredient(BaseDrink baseDrink, File picture, Double quantity) {
 		this.baseDrink = baseDrink;
 		this.picture = picture;
