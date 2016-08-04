@@ -29,6 +29,8 @@ public class FunctionalTests extends AbstractTestNGSpringContextTests {
 	private MongoOperations mongoOperation;
 
 	public FunctionalTests() {
+
+		drink = new Drink();
 		ctx = new GenericXmlApplicationContext("springBeans.xml");
 		mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
 
