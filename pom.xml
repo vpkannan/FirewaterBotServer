@@ -68,7 +68,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>FirewaterBot</finalName>
+		<finalName>firewaterbot</finalName>
 		<plugins>
 
 			<!-- download source code in Eclipse, best practice -->
