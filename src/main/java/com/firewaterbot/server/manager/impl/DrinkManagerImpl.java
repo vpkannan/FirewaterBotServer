@@ -3,12 +3,17 @@
  */
 package com.firewaterbot.server.manager.impl;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 import com.firewaterbot.server.entity.BaseDrink;
 import com.firewaterbot.server.entity.Drink;
-import com.firewaterbot.server.entity.Tap;
 import com.firewaterbot.server.manager.DrinkManager;
 
 /**
@@ -17,16 +22,13 @@ import com.firewaterbot.server.manager.DrinkManager;
  */
 public class DrinkManagerImpl implements DrinkManager {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.firewaterbot.server.manager.DrinkManager#sendRecipeToVendingMachine(
-	 * java.lang.String)
-	 */
-	public Map<Tap, Float> sendRecipeToVendingMachine(String drinkName) {
-		// TODO Auto-generated method stub
-		return null;
+	private ApplicationContext ctx;
+	private MongoOperations mongoOperation;
+
+	public DrinkManagerImpl() {
+		ctx = new GenericXmlApplicationContext("springBeans.xml");
+		mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
+
 	}
 
 	/*
@@ -36,13 +38,17 @@ public class DrinkManagerImpl implements DrinkManager {
 	 * firewaterbot.server.entity.Drink)
 	 */
 	public boolean addNewDrinkRecipe(Drink drink) {
-		
-		return false;
+
+		mongoOperation.save(drink);
+		return true;
 	}
 
 	public Drink getDrinkRecipe(String drinkName) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Query searchDrinkRecipeQuery = new Query(Criteria.where("name").is(drinkName));
+		Drink savedDrinkRecipe = mongoOperation.findOne(searchDrinkRecipeQuery, Drink.class);
+
+		return savedDrinkRecipe;
 	}
 
 	/*
@@ -52,9 +58,14 @@ public class DrinkManagerImpl implements DrinkManager {
 	 * com.firewaterbot.server.manager.DrinkManager#getDrinksByBaseDrinks(com.
 	 * firewaterbot.server.entity.BaseDrink)
 	 */
-	public List<Drink> getDrinksByBaseDrinks(BaseDrink baseDrink) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Drink> getDrinksByBaseDrink(BaseDrink baseDrink) {
+
+		List<Drink> drinkRecipes = new ArrayList<Drink>();
+
+		Query searchUserQuery = new Query(Criteria.where("ingredients").in(baseDrink));
+		drinkRecipes = mongoOperation.find(searchUserQuery, Drink.class);
+
+		return drinkRecipes;
 	}
 
 	/*
@@ -64,40 +75,8 @@ public class DrinkManagerImpl implements DrinkManager {
 	 * com.firewaterbot.server.manager.DrinkManager#getDrinksByAvailableTaps()
 	 */
 	public List<Drink> getDrinksByAvailableTaps() {
-		// TODO Auto-generated method stub
+
 		return null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.firewaterbot.server.manager.DrinkManager#setCupCapacity(float)
-	 */
-	public boolean setCupCapacity(float cupCapacity) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.firewaterbot.server.manager.DrinkManager#getCupCapacity()
-	 */
-	public float getCupCapacity() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.firewaterbot.server.manager.DrinkManager#calculateDispensingQuantity(
-	 * float)
-	 */
-	public float calculateDispensingQuantity(float percentageOfDrink) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 }
