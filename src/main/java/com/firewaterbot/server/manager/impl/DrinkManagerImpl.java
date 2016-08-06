@@ -62,8 +62,8 @@ public class DrinkManagerImpl implements DrinkManager {
 
 		List<Drink> drinkRecipes = new ArrayList<Drink>();
 
-		Query searchUserQuery = new Query(Criteria.where("ingredients").in(baseDrink));
-		drinkRecipes = mongoOperation.find(searchUserQuery, Drink.class);
+		Query searchDrinksQuery = new Query(Criteria.where("ingredients.baseDrink").all(baseDrink.toString()));
+		drinkRecipes = mongoOperation.find(searchDrinksQuery, Drink.class);
 
 		return drinkRecipes;
 	}
