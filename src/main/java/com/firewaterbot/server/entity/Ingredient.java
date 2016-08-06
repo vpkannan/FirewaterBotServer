@@ -12,16 +12,16 @@ import java.io.File;
 public class Ingredient {
 
 	private BaseDrink baseDrink;
-	private File picture;
+	private String pictureFileName;
 	private Double Quantity;
 
 	public Ingredient() {
 
 	}
 
-	public Ingredient(BaseDrink baseDrink, File picture, Double quantity) {
+	public Ingredient(BaseDrink baseDrink, String pictureFileName, Double quantity) {
 		this.baseDrink = baseDrink;
-		this.picture = picture;
+		this.pictureFileName = pictureFileName;
 		Quantity = quantity;
 	}
 
@@ -38,12 +38,12 @@ public class Ingredient {
 		this.baseDrink = baseDrink;
 	}
 
-	public File getPicture() {
-		return picture;
+	public String getPictureFileName() {
+		return pictureFileName;
 	}
 
-	public void setPicture(File picture) {
-		this.picture = picture;
+	public void setPictureFileName(String pictureFileName) {
+		this.pictureFileName = pictureFileName;
 	}
 
 	public Double getQuantity() {

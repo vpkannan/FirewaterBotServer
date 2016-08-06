@@ -36,14 +36,15 @@ public class FunctionalTests extends AbstractTestNGSpringContextTests {
 		this.timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 
 		String drinkName = "Martini" + "@" + this.timeStamp;
-		// this.drink.setPicture(new File("martini.jpeg"));
+
+		String pictureFile = "martini.jpeg";
 
 		List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
 		ingredients.add(new Ingredient(BaseDrink.GIN, 40.0));
 		ingredients.add(new Ingredient(BaseDrink.VERMOUTH, 20.0));
 
-		this.drink = new Drink(drinkName, ingredients);
+		this.drink = new Drink(drinkName, pictureFile, ingredients);
 
 	}
 

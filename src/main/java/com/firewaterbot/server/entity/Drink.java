@@ -16,16 +16,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Drink {
 
 	private String name;
-	private File picture;
+	private String pictureFileName;
 	private List<Ingredient> ingredients;
 
 	public Drink() {
 
 	}
 
-	public Drink(String name, File picture, List<Ingredient> ingredients) {
+	public Drink(String name, String pictureFileName, List<Ingredient> ingredients) {
 		this.name = name;
-		this.picture = picture;
+		this.pictureFileName = pictureFileName;
 		this.ingredients = ingredients;
 	}
 
@@ -42,12 +42,12 @@ public class Drink {
 		this.name = name;
 	}
 
-	public File getPicture() {
-		return picture;
+	public String getPictureFileName() {
+		return pictureFileName;
 	}
 
-	public void setPicture(File picture) {
-		this.picture = picture;
+	public void setPictureFileName(String pictureFileName) {
+		this.pictureFileName = pictureFileName;
 	}
 
 	public List<Ingredient> getIngredients() {
